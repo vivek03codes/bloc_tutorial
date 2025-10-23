@@ -1,9 +1,13 @@
+import 'package:bloc_tutorial/counter/bloc/auth/auth_bloc.dart';
+import 'package:bloc_tutorial/counter/bloc/counter_bloc.dart';
 import 'package:bloc_tutorial/counter/cubit/todo_cubit.dart';
 import 'package:bloc_tutorial/counter/view/add_todo_view.dart';
+import 'package:bloc_tutorial/counter/view/counter_view.dart';
+import 'package:bloc_tutorial/counter/view/home_view.dart';
+import 'package:bloc_tutorial/counter/view/login_view.dart';
 import 'package:bloc_tutorial/counter/view/todo_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'counter/view/counter_page.dart';
 
 class CounterApp extends StatelessWidget {
   const CounterApp({super.key});
@@ -12,12 +16,17 @@ class CounterApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => TodoCubit())
+        BlocProvider(create: (_) => CounterBloc()),
+        BlocProvider(create: (_) => TodoCubit()),
+        BlocProvider(create: (_) => AuthBloc()),
       ],
       child: MaterialApp(
           initialRoute: "/",
           routes: {
-            "/": (_) => const TodoView(),
+            "/": (_) => const LoginScreen(),
+            "/home": (_) => const HomeScreen(),
+            "/counter": (_) => const CounterView(),
+            "/todo-list": (_) => TodoView(),
             "/add-todo": (_) => const AddTodoView(),
           }
       ),

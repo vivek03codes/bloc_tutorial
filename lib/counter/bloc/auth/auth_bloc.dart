@@ -14,7 +14,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final password = event.password;
 
       if (password.length < 6) {
-        return emit(AuthFailure("Password length should be greater or equal to 6 characters"));
+        await Future.delayed(const Duration(seconds: 1), () {
+          return emit(AuthFailure("Password length should be greater or equal to 6 characters"));
+        });
+        return;
       }
 
       await Future.delayed(const Duration(seconds: 1), () {

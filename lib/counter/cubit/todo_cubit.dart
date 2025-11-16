@@ -7,4 +7,9 @@ class TodoCubit extends Cubit<List<String>> {
     state.add(todo);
     emit([...state]);
   }
+
+  void removeTodo() {
+    state.clear();
+    emit([...state]);
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:bloc_tutorial/counter/bloc/auth/auth_bloc.dart';
 import 'package:bloc_tutorial/counter/bloc/counter_bloc.dart';
+import 'package:bloc_tutorial/counter/counter.dart';
 import 'package:bloc_tutorial/counter/cubit/todo_cubit.dart';
 import 'package:bloc_tutorial/counter/view/add_todo_view.dart';
 import 'package:bloc_tutorial/counter/view/counter_view.dart';
@@ -19,6 +20,7 @@ class CounterApp extends StatelessWidget {
         BlocProvider(create: (_) => CounterBloc()),
         BlocProvider(create: (_) => TodoCubit()),
         BlocProvider(create: (_) => AuthBloc()),
+        BlocProvider(create: (_) => CounterCubit())
       ],
       child: MaterialApp(
           initialRoute: "/",
